@@ -1,0 +1,1185 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#0b0c0f">
+
+<title>B — Beldea</title>
+
+<style>
+
+/* =========================
+   BASE
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0b0c0f;
+  --surface: #15171c;
+  --surface2: #1d2027;
+
+  --text: #f5f5f7;
+  --muted: #a5a8b0;
+
+  --blue: #a8c7fa;
+  --blue2: #d7e7ff;
+
+  --outline: rgba(255,255,255,.09);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    Inter,
+    Roboto,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  width: 600px;
+  height: 600px;
+
+  top: -300px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: #34445f;
+
+  opacity: .18;
+
+  filter: blur(130px);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 50;
+
+  width: 100%;
+
+  border-bottom: 1px solid var(--outline);
+
+  background: rgba(11,12,15,.75);
+
+  backdrop-filter: blur(20px);
+}
+
+.nav-inner {
+  max-width: 1100px;
+
+  margin: auto;
+
+  height: 70px;
+
+  padding: 0 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.logo-box {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 11px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--text);
+
+  color: var(--bg);
+
+  font-weight: 900;
+
+  font-size: 20px;
+}
+
+.logo-name {
+  font-weight: 700;
+
+  letter-spacing: -.3px;
+}
+
+.nav-links {
+  display: flex;
+
+  gap: 25px;
+
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  transition: .2s;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: 780px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 100px 20px 70px;
+}
+
+.badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  border: 1px solid var(--outline);
+
+  border-radius: 50px;
+
+  background: rgba(255,255,255,.035);
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  margin-bottom: 28px;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+}
+
+.hero h1 {
+  font-size: clamp(110px, 25vw, 230px);
+
+  line-height: .72;
+
+  letter-spacing: -15px;
+
+  margin-right: 15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 10%,
+      #aeb6c8 100%
+    );
+
+  -webkit-background-clip: text;
+
+  color: transparent;
+
+  animation: appear 1s ease;
+}
+
+.hero h2 {
+  margin-top: 50px;
+
+  font-size: clamp(30px, 6vw, 58px);
+
+  letter-spacing: -2.5px;
+
+  line-height: 1.02;
+}
+
+.hero p {
+  margin-top: 22px;
+
+  max-width: 580px;
+
+  color: var(--muted);
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 32px;
+}
+
+.btn {
+  border: 0;
+
+  padding: 14px 22px;
+
+  border-radius: 15px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.btn-primary {
+  background: var(--blue);
+
+  color: #101318;
+}
+
+.btn-secondary {
+  background: var(--surface);
+
+  color: var(--text);
+
+  border: 1px solid var(--outline);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   PRODUCT MOCKUP
+========================= */
+
+.showcase {
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+}
+
+.mockup {
+  position: relative;
+
+  height: 450px;
+
+  border-radius: 35px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--outline);
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #354154,
+      #16181e 55%,
+      #101114
+    );
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.45);
+}
+
+.mockup-content {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.mockup-logo {
+  font-size: 100px;
+
+  font-weight: 900;
+
+  letter-spacing: -8px;
+
+  opacity: .95;
+}
+
+.mockup-text {
+  color: var(--muted);
+
+  margin-top: 10px;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+section {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 110px 22px;
+}
+
+.section-label {
+  color: var(--blue);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: clamp(35px, 7vw, 60px);
+
+  letter-spacing: -3px;
+
+  max-width: 650px;
+}
+
+.section-description {
+  margin-top: 15px;
+
+  color: var(--muted);
+
+  max-width: 600px;
+
+  line-height: 1.6;
+}
+
+.feature-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 15px;
+
+  margin-top: 55px;
+}
+
+.feature {
+  min-height: 250px;
+
+  padding: 28px;
+
+  border-radius: 28px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--outline);
+
+  transition: .25s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+
+  background: var(--surface2);
+}
+
+.feature-icon {
+  font-size: 35px;
+
+  margin-bottom: 45px;
+}
+
+.feature h3 {
+  font-size: 22px;
+
+  margin-bottom: 9px;
+}
+
+.feature p {
+  color: var(--muted);
+
+  line-height: 1.5;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   ROADMAP
+========================= */
+
+.roadmap {
+  margin-top: 55px;
+
+  display: grid;
+
+  gap: 10px;
+}
+
+.roadmap-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 18px;
+
+  border: 1px solid var(--outline);
+
+  border-radius: 20px;
+
+  background: var(--surface);
+}
+
+.number {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 13px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--surface2);
+
+  color: var(--blue);
+
+  font-weight: 800;
+}
+
+.roadmap-item strong {
+  display: block;
+
+  margin-bottom: 3px;
+}
+
+.roadmap-item span {
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+
+  padding: 60px 20px;
+
+  border-top: 1px solid var(--outline);
+
+  color: #676a72;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+.lock {
+  position: fixed;
+
+  right: 15px;
+  bottom: 15px;
+
+  width: 31px;
+  height: 31px;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--outline);
+
+  background: #16181d;
+
+  color: #777;
+
+  opacity: .35;
+
+  cursor: pointer;
+
+  z-index: 100;
+
+  transition: .2s;
+}
+
+.lock:hover {
+  opacity: 1;
+
+  transform: scale(1.1);
+}
+
+
+/* =========================
+   DEV PANEL
+========================= */
+
+#devPanel {
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 200;
+
+  padding: 25px;
+
+  background: rgba(5,6,8,.82);
+
+  backdrop-filter: blur(20px);
+}
+
+.dev-box {
+  max-width: 480px;
+
+  margin: 15vh auto;
+
+  padding: 30px;
+
+  border-radius: 27px;
+
+  border: 1px solid var(--outline);
+
+  background: var(--surface);
+
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+
+.dev-box h2 {
+  margin-bottom: 8px;
+}
+
+.dev-box p {
+  color: var(--muted);
+
+  line-height: 1.5;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes appear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(.95);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 650px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    min-height: 680px;
+
+    padding-top: 80px;
+  }
+
+  .hero h1 {
+    font-size: 130px;
+
+    letter-spacing: -10px;
+  }
+
+  .hero h2 {
+    margin-top: 40px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    width: 100%;
+
+    max-width: 280px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .mockup {
+    height: 330px;
+
+    border-radius: 27px;
+  }
+
+  .mockup-logo {
+    font-size: 80px;
+  }
+
+  section {
+    padding: 80px 18px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+  <div class="nav-inner">
+
+    <div class="logo">
+
+      <div class="logo-box">
+        B
+      </div>
+
+      <span class="logo-name">
+        Beldea
+      </span>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="#features">
+          Features
+        </a>
+      </li>
+
+      <li>
+        <a href="#roadmap">
+          Roadmap
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<main class="hero">
+
+  <div class="badge">
+
+    <span class="badge-dot"></span>
+
+    COMING SOON
+
+  </div>
+
+
+  <h1>
+    B
+  </h1>
+
+
+  <h2>
+    One remote.<br>
+    Everything connected.
+  </h2>
+
+
+  <p>
+
+    B is a new control center for your
+    connected devices — designed around
+    simplicity, speed and the devices you
+    already use.
+
+  </p>
+
+
+  <div class="hero-buttons">
+
+    <button
+      class="btn btn-primary"
+      onclick="showMessage()">
+
+      Explore B
+
+    </button>
+
+
+    <button
+      class="btn btn-secondary"
+      onclick="document
+      .getElementById('roadmap')
+      .scrollIntoView()">
+
+      View roadmap
+
+    </button>
+
+  </div>
+
+</main>
+
+
+
+<!-- PRODUCT -->
+
+<div class="showcase">
+
+  <div class="mockup">
+
+    <div class="mockup-content">
+
+      <div class="mockup-logo">
+        B
+      </div>
+
+      <div class="mockup-text">
+        Beldea Remote Center
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+  <div class="section-label">
+    The idea
+  </div>
+
+  <h2 class="section-title">
+    Your devices.<br>
+    One place.
+  </h2>
+
+  <p class="section-description">
+
+    B is being designed to turn your
+    phone, smartwatch, TV and media
+    devices into one connected ecosystem.
+
+  </p>
+
+
+  <div class="feature-grid">
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        📱
+      </div>
+
+      <h3>
+        Phone
+      </h3>
+
+      <p>
+        Control supported phone functions
+        from your watch or another device.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        ⌚
+      </div>
+
+      <h3>
+        Watch
+      </h3>
+
+      <p>
+        Turn your smartwatch into a
+        customizable remote control.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        📺
+      </div>
+
+      <h3>
+        TV
+      </h3>
+
+      <p>
+        Keep your entertainment controls
+        close without searching for a remote.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        🎵
+      </div>
+
+      <h3>
+        Media
+      </h3>
+
+      <p>
+        Play, pause, skip and control
+        compatible media devices.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- ROADMAP -->
+
+<section id="roadmap">
+
+  <div class="section-label">
+    Development
+  </div>
+
+  <h2 class="section-title">
+    The beginning.
+  </h2>
+
+  <p class="section-description">
+
+    B is still being built.
+    This is where the project starts.
+
+  </p>
+
+
+  <div class="roadmap">
+
+
+    <div class="roadmap-item">
+
+      <div class="number">
+        01
+      </div>
+
+      <div>
+
+        <strong>
+          Website
+        </strong>
+
+        <span>
+          You're looking at it.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="roadmap-item">
+
+      <div class="number">
+        02
+      </div>
+
+      <div>
+
+        <strong>
+          Phone Remote
+        </strong>
+
+        <span>
+          Control supported phone features.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="roadmap-item">
+
+      <div class="number">
+        03
+      </div>
+
+      <div>
+
+        <strong>
+          Watch Remote
+        </strong>
+
+        <span>
+          Bring B to Wear OS.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="roadmap-item">
+
+      <div class="number">
+        04
+      </div>
+
+      <div>
+
+        <strong>
+          TV Remote
+        </strong>
+
+        <span>
+          Connect supported televisions.
+        </span>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  B — Beldea
+
+  <br><br>
+
+  A small project with a big idea.
+
+  <br><br>
+
+  © 2026 Beldea
+
+</footer>
+
+
+
+<!-- SECRET BUTTON -->
+
+<button
+  class="lock"
+  onclick="developerAccess()">
+
+  🔒
+
+</button>
+
+
+
+<!-- DEVELOPER PANEL -->
+
+<div id="devPanel">
+
+  <div class="dev-box">
+
+    <h2>
+      Developer Mode
+    </h2>
+
+    <p>
+
+      Welcome to the B development area.
+      More tools will appear here as B grows.
+
+    </p>
+
+
+    <button
+      class="btn btn-primary"
+      onclick="closeDeveloper()">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+const PASSWORD = "8008";
+
+
+function developerAccess() {
+
+  const input =
+    prompt("Beldea developer password:");
+
+  if(input === PASSWORD) {
+
+    document
+      .getElementById("devPanel")
+      .style.display = "block";
+
+  }
+
+  else if(input !== null) {
+
+    alert("Incorrect password.");
+
+  }
+
+}
+
+
+function closeDeveloper() {
+
+  document
+    .getElementById("devPanel")
+    .style.display = "none";
+
+}
+
+
+function showMessage() {
+
+  alert(
+    "B is coming soon. 🚀"
+  );
+
+}
+
+</script>
+
+
+</body>
+</html>
+```
